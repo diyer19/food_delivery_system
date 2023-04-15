@@ -23,7 +23,7 @@ CREATE TABLE Restaurant (
     street_address varchar(100) not null,
     city varchar(50) not null,
     state varchar(50) not null,
-    zip varchar(50) not null
+    zip int not null
 );
 
 
@@ -37,7 +37,7 @@ CREATE TABLE Delivery_Person (
     street_address varchar(100) not null,
     city varchar(50) not null,
     state varchar(50) not null,
-    zip varchar(50) not null,
+    zip int not null,
     mode_transportation varchar(50) not null
 );
 
@@ -46,7 +46,7 @@ CREATE TABLE Delivery_Rating (
     driver_id int,
     customer_id int,
     delivery_id int,
-    review varchar(100),
+    review text,
     delivery_time datetime default current_timestamp not null,
     score float not null,
     PRIMARY KEY(driver_id,customer_id,delivery_id),
@@ -72,7 +72,7 @@ CREATE TABLE Delivery_Address (
     street_address varchar(100) not null,
     state varchar(50) not null,
     city varchar(50) not null,
-    zip varchar(50) not null,
+    zip int not null,
     PRIMARY KEY(customer_id),
     FOREIGN KEY (customer_id) REFERENCES Customer(customer_id) on delete cascade on update cascade
 );
@@ -84,7 +84,7 @@ CREATE TABLE Payment_Info (
     cc varchar(100) not null,
     zip varchar(50) not null,
     expiration int not null,
-    cvv int not null,
+    cvv datetime not null,
     PRIMARY KEY(customer_id, payment_id),
     FOREIGN KEY (customer_id) REFERENCES Customer(customer_id) on update cascade on delete cascade
 );
@@ -97,7 +97,7 @@ CREATE TABLE Billing_Address (
     street_address varchar(100) not null,
     state varchar(50) not null,
     city varchar(50) not null,
-    zip varchar(50) not null,
+    zip int not null,
     PRIMARY KEY(customer_id, payment_id),
     FOREIGN KEY (customer_id, payment_id) REFERENCES Payment_Info(customer_id, payment_id)  on delete cascade on update cascade
 );
@@ -146,7 +146,7 @@ CREATE TABLE Restaurant_Review (
     restaurant_id int,
     review_id int,
     score float not null,
-    review varchar(100),
+    review text,
     review_date datetime default current_timestamp not null,
     PRIMARY KEY(customer_id, restaurant_id, review_id),
     FOREIGN KEY (customer_id) REFERENCES Customer(customer_id) on delete cascade on update cascade,
