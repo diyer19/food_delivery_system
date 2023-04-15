@@ -278,3 +278,50 @@ INSERT INTO Customer(customer_id,phone_number,first_name,last_name,email) VALUES
     ,(98,'609-630-8366','Vi','Pask','vpask2p@netlog.com')
     ,(99,'846-579-0881','Karoline','Hixley','khixley2q@over-blog.com')
     ,(100,'214-805-4859','Kamilah','Mincini','kmincini2r@ibm.com');
+
+
+INSERT INTO Delivery_Person(driver_id,first_name,last_name,phone_number,email,street_address,city,state,zip,mode_transportation) VALUES
+    (1,'Wilmette','Pearne','319-487-0641','wpearne0@nasa.gov','5 Hollow Ridge Circle','Waterloo','Iowa',50706,3)
+    ,(2,'Chris','Prise','918-985-7561','cprise1@dyndns.org','4121 Autumn Leaf Hill','Tulsa','Oklahoma',74126,2)
+    ,(3,'Patti','Badcock','720-308-6302','pbadcock2@nasa.gov','317 Westend Place','Littleton','Colorado',80161,3)
+    ,(4,'Geraldine','Goulthorp','202-515-1601','ggoulthorp3@yahoo.co.jp','4 Golf Street','Washington','District of Columbia',20268,2)
+    ,(5,'Janeva','Bailes','334-440-9605','jbailes4@globo.com','4409 Granby Road','Montgomery','Alabama',36104,2)
+    ,(6,'Floyd','Moggan','218-535-0696','fmoggan5@biglobe.ne.jp','2 Texas Pass','Minneapolis','Minnesota',55423,1)
+    ,(7,'Tessy','Copcott','916-767-2504','tcopcott6@youku.com','41 Ramsey Circle','Sacramento','California',94230,1)
+    ,(8,'Holden','Brunelli','212-729-8616','hbrunelli7@google.nl','8699 Longview Point','New York City','New York',10131,1)
+    ,(9,'Joya','O''Cullen','206-299-2857','jocullen8@cisco.com','9 Mariners Cove Pass','Seattle','Washington',98127,2)
+    ,(10,'Willey','Hartgill','315-284-6982','whartgill9@illinois.edu','61169 Harper Parkway','Syracuse','New York',13224,2)
+    ,(11,'Ragnar','Westcarr','404-757-3834','rwestcarra@blogs.com','8 Buell Parkway','Marietta','Georgia',30066,3)
+    ,(12,'Greta','Cassy','918-141-0497','gcassyb@ovh.net','03 Washington Lane','Tulsa','Oklahoma',74156,1)
+    ,(13,'Rock','Aldiss','404-709-8920','raldissc@tripadvisor.com','3749 Crownhardt Street','Atlanta','Georgia',30351,1)
+    ,(14,'Lindi','Highnam','682-270-7696','lhighnamd@last.fm','0 Parkside Court','Fort Worth','Texas',76178,2)
+    ,(15,'Brooks','Placido','804-894-3410','bplacidoe@gizmodo.com','17 Main Drive','Richmond','Virginia',23220,1)
+    ,(16,'Vikki','Coen','304-223-9497','vcoenf@ed.gov','811 Lien Junction','Charleston','West Virginia',25362,1)
+    ,(17,'Grace','Cooney','612-476-9246','gcooneyg@google.cn','0393 Moland Court','Saint Paul','Minnesota',55108,1)
+    ,(18,'Julia','Reasce','702-328-6019','jreasceh@spiegel.de','1 Fairview Way','Las Vegas','Nevada',89115,1)
+    ,(19,'Jaclin','Melesk','970-473-2911','jmeleski@simplemachines.org','8 Reindahl Plaza','Fort Collins','Colorado',80525,1)
+    ,(20,'Bertine','Goundry','216-612-3452','bgoundryj@bluehost.com','28232 Calypso Terrace','Cleveland','Ohio',44105,1);
+
+
+INSERT INTO Restaurant(restaurant_id,restaurant_name,phone_number,avg_delivery_time,street_address,city,state,zip) VALUES
+    (1,'Photolist','727-699-6467',31,'727 Dayton Road','Saint Petersburg','FL',33737)
+    ,(2,'Kwinu','415-679-8521',75,'5 Trailsway Avenue','San Francisco','CA',94169)
+    ,(3,'Shufflebeat','971-900-1145',20,'2372 Spenser Place','Portland','OR',97255)
+    ,(4,'Demivee','901-712-9628',63,'18619 Saint Paul Trail','Memphis','TN',38168)
+    ,(5,'Vimbo','512-345-5424',59,'4 Ludington Terrace','Austin','TX',78789)
+    ,(6,'Fliptune','213-736-7772',21,'868 Ohio Crossing','Los Angeles','CA',90025)
+    ,(7,'Skyndu','608-414-4597',59,'220 Anniversary Park','Madison','WI',53705)
+    ,(8,'Skyble','847-971-6576',75,'29 Hintze Lane','Evanston','IL',60208)
+    ,(9,'Twimm','989-829-7577',71,'5482 Rigney Court','Midland','MI',48670)
+    ,(10,'Pixoboo','718-245-2004',21,'37232 Spohn Pass','Bronx','NY',10469)
+    ,(11,'Quimm','214-998-4503',41,'203 Manitowish Drive','Dallas','TX',75265)
+    ,(12,'Gabspot','760-952-2511',37,'85 Pearson Drive','San Bernardino','CA',92415)
+    ,(13,'Feedfire','718-900-5048',33,'466 Florence Alley','Brooklyn','NY',11220)
+    ,(14,'Skalith','775-326-3747',72,'198 Messerschmidt Street','Reno','NV',89595)
+    ,(15,'Camido','727-191-0332',34,'31919 Heffernan Drive','Saint Petersburg','FL',33705)
+    ,(16,'Realmix','623-584-9485',61,'44 Hoffman Lane','Phoenix','AZ',85020)
+    ,(17,'Flipopia','614-645-2360',51,'81 Welch Street','Columbus','OH',43215)
+    ,(18,'Izio','361-730-1580',67,'896 Division Avenue','Corpus Christi','TX',78426)
+    ,(19,'Yotz','682-865-9027',15,'596 Nova Alley','Fort Worth','TX',76115)
+    ,(20,'Yakitri','202-868-6799',56,'0 Macpherson Court','Washington','DC',20397);
+
