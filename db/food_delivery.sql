@@ -2,17 +2,16 @@ show tables;
 
 create database food_delivery;
 
--- use food_delivery;
+use food_delivery;
 
 CREATE TABLE Customer (
-    customer_id int AUTO_INCREMENT PRIMARY KEY,
+    customer_id int not null AUTO_INCREMENT,
     phone_number varchar(50) not null UNIQUE,
     first_name varchar(50) not null,
     last_name varchar(50) not null,
-    email varchar(100) not null UNIQUE
+    email varchar(100) not null UNIQUE,
+    PRIMARY KEY (customer_id)
 );
-
-
 
 
 CREATE TABLE Restaurant (
