@@ -38,7 +38,7 @@ def get_customer(userID):
 
 
 
-# post a customer
+# Post  Customer
 @customers.route('/new_customer', methods=['POST'])
 def post_new_customer():
     current_app.logger.info('Processing form data')
@@ -63,6 +63,37 @@ def post_new_customer():
     insert_stmt += last_name + '", "'
     insert_stmt += phone_number + '", "'
     insert_stmt += email + '" )'
+
+
+    # executing anad commiting the insert stmt 
+    cursor = db.get_db().cursor()
+    cursor.execute(insert_stmt)
+    #can't commit the cursor, have to commit the db 
+    db.get_db().commit()
+    return "Success"
+
+# Post Delivery Address 
+@customers.route('/new_delivery_address', methods=['POST'])
+def post_new_delivery_address():
+    current_app.logger.info('Processing form data')
+    req_data = request.get_json()
+    current_app.logger.info(req_data)
+
+    # extracting the variables 
+    # this needs to match the widget input box names in Appsmith 
+    # ex: 'product_name', 'product_description', 'product_price', etc 
+    street = req_data['delivery_street']
+    city = req_data['delivery_city']
+    state = req_data['delivery_state']
+    zipcode = req_data['delivery_zip']
+
+    # constructing the query 
+
+    insert_stmt = 'insert into Delivery_Address (street_address, state, city, zip) values ("'
+    insert_stmt += street + '", "'
+    insert_stmt += state + '", "'
+    insert_stmt += city + '", "'
+    insert_stmt += zipcode + '" )'
 
 
     # executing anad commiting the insert stmt 

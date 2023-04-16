@@ -68,7 +68,7 @@ CREATE TABLE Screening (
 
 
 CREATE TABLE Delivery_Address (
-    customer_id int,
+    customer_id int not null AUTO_INCREMENT,
     street_address varchar(100) not null,
     state varchar(50) not null,
     city varchar(50) not null,
@@ -1735,9 +1735,4 @@ INSERT INTO MenuItem_Order(restaurant_id,menu_item_id,customer_id,driver_id,orde
     ,(20,5,71,2,246)
     ,(20,5,46,10,265)
     ,(20,5,36,11,272);
-
-
-
-
-
 

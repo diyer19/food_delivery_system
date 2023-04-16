@@ -36,5 +36,43 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "58d8a097-5e4b-4038-bd0d-203ef1c9bcdb",
+    "colId": "history",
+    "containerId": "",
+    "name": "PostNewDeliveryAddress_1",
+    "url": "localhost:8001/c/new_delivery_address",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-04-16T20:36:50.125Z",
+    "modified": "2023-04-16T20:36:50.125Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"delivery_street\": \"251 Huntington Ave\",\n  \"delivery_city\": \"Boston\",\n  \"delivery_state\": \"MA\",\n  \"delivery_zip\": \"02120\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "ae451077-7069-4957-8f3b-4588c8ec01a2",
+    "colId": "history",
+    "containerId": "",
+    "name": "PostNewDeliveryAddress_2",
+    "url": "localhost:8001/c/new_delivery_address",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-04-16T20:44:49.451Z",
+    "modified": "2023-04-16T20:44:49.451Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"delivery_street\": \"1000 Huntington Avenue\",\n  \"delivery_city\": \"Roxbury\",\n  \"delivery_state\": \"MA\",\n  \"delivery_zip\": \"02120\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
