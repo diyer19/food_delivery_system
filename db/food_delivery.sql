@@ -2,10 +2,10 @@ show tables;
 
 create database food_delivery;
 
-use food_delivery;
+-- use food_delivery;
 
 CREATE TABLE Customer (
-    customer_id int PRIMARY KEY,
+    customer_id int AUTO_INCREMENT PRIMARY KEY,
     phone_number varchar(50) not null UNIQUE,
     first_name varchar(50) not null,
     last_name varchar(50) not null,

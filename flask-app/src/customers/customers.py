@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, make_response
+from flask import Blueprint, request, jsonify, make_response, current_app
 import json
 from src import db
 
@@ -41,32 +41,26 @@ def get_customer(userID):
 # post a customer
 @customers.route('/new_customer', methods=['POST'])
 def post_new_customer():
-    curr_app.logger.info('Processing form data')
+    current_app.logger.info('Processing form data')
 
-    # capture the json data from the request object
-    # rewuest is the object that gets automatically created whenever the flask
-    # executes this code
-
-    # collecting data from request object
     req_data = request.get_json()
 
-    ## print out the data in the docker logs
-    curr_app.logger.info(req_data)
+    current_app.logger.info(req_data)
 
 
     # extracting the variables 
     # this needs to match the widget input box names in Appsmith 
     # ex: 'product_name', 'product_description', 'product_price', etc 
-    prod_name = req_data['product_name']
-    prod_description = req_data['product_description']
-    prod_price = req_data['product_price']
-    category = req_data['product_category']
+    first_name = req_data['customer_firstname']
+    last_name = req_data['customer_lastname']
+    phone_number = req_data['customer_phone']
+    email = req_data['customer_email']
 
     # constructing the query 
-    insert_stmt = 'INSERT INTO products (product_name, description, list_price) VALUES ("'
-    insert_stmt += prod_name + '","' + prod_description + '", ' + str(prod_price) + '", '
-    insert_stmt += category + ')'
-    curr_app.logger.info(insert_stmt)
+    insert_stmt = 'INSERT INTO Customer (first_name, last_name, phone_number, email) VALUES ("'
+    insert_stmt += first_name + '","' + last_name + '", ' + phone_number + '", '
+    insert_stmt += email + ')'
+    current_app.logger.info(insert_stmt)
 
     # executing anad commiting the insert stmt 
     cursor = db.get_db().cursor()
