@@ -74,5 +74,81 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "501fc280-2651-4174-aeca-555adcdc98a1",
+    "colId": "history",
+    "containerId": "",
+    "name": "PostPaymentInfo_1",
+    "url": "localhost:8001/c/new_payment_info",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-04-16T22:57:04.940Z",
+    "modified": "2023-04-16T22:58:50.873Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"payment_number\": \"4201012412412\",\n  \"payment_expiration\": \"1/1/2025\",\n  \"payment_cvv\": \"0999\",\n  \"payment_zip\": \"02120\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "4d0c0764-486b-438c-9e7b-8cee78aa4ad4",
+    "colId": "history",
+    "containerId": "",
+    "name": "PostPaymentInfo_2",
+    "url": "localhost:8001/c/new_payment_info",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-04-16T22:57:04.940Z",
+    "modified": "2023-04-16T23:14:53.535Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"payment_number\": \"490334890712\",\n  \"payment_expiration\": \"10/8/2027\",\n  \"payment_cvv\": \"2020\",\n  \"payment_zip\": \"17005\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "3f434288-fe65-4446-a271-9f43a1cc2f30",
+    "colId": "history",
+    "containerId": "",
+    "name": "PostBillingAddress_1",
+    "url": "localhost:8001/c/new_billing_address",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-04-16T23:17:02.026Z",
+    "modified": "2023-04-16T23:30:19.170Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"billing_street\": \"277 Huntington Ave\",\n  \"billing_city\": \"Boston\",\n  \"billing_state\": \"MA\",\n  \"billing_zip\": \"12140\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "024b53a0-5e9c-46a0-9350-43e4466420a3",
+    "colId": "history",
+    "containerId": "",
+    "name": "PostBillingAddress_2",
+    "url": "localhost:8001/c/new_billing_address",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-04-16T23:17:02.026Z",
+    "modified": "2023-04-16T23:31:22.859Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"billing_street\": \"80 Roxbury Ave\",\n  \"billing_city\": \"New York\",\n  \"billing_state\": \"NY\",\n  \"billing_zip\": \"11124\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
