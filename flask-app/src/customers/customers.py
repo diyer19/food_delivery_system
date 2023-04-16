@@ -57,10 +57,13 @@ def post_new_customer():
     email = req_data['customer_email']
 
     # constructing the query 
-    insert_stmt = 'INSERT INTO Customer (first_name, last_name, phone_number, email) VALUES ("'
-    insert_stmt += first_name + '","' + last_name + '", ' + phone_number + '", '
-    insert_stmt += email + ')'
-    current_app.logger.info(insert_stmt)
+
+    insert_stmt = 'insert into Customer (first_name, last_name, phone_number, email) values ("'
+    insert_stmt += first_name + '", "'
+    insert_stmt += last_name + '", "'
+    insert_stmt += phone_number + '", "'
+    insert_stmt += email + '" )'
+
 
     # executing anad commiting the insert stmt 
     cursor = db.get_db().cursor()
