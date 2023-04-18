@@ -178,10 +178,10 @@ def update_billing_address(phone_number):
 
 
     # extracting the variables 
-    street = req_data['billing_street']
-    city = req_data['billing_city']
-    state = req_data['billing_state']
-    zipcode = req_data['billing_zip']
+    street = str(req_data['billing_street'])
+    city = str(req_data['billing_city'])
+    state = str(req_data['billing_state'])
+    zipcode = str(req_data['billing_zip'])
 
     update = "UPDATE Billing_Address"
     update += " SET street_address = '" + street + "', city = '" + city + "', state = '" + state + "', zip = '" + zipcode + "'"
@@ -208,10 +208,10 @@ def update_delivery_address(phone_number):
 
 
     # extracting the variables 
-    street = req_data['delivery_street']
-    city = req_data['delivery_city']
-    state = req_data['delivery_state']
-    zipcode = req_data['delivery_zip']
+    street = str(req_data['delivery_street'])
+    city = str(req_data['delivery_city'])
+    state = str(req_data['delivery_state'])
+    zipcode = str(req_data['delivery_zip'])
 
     update = "UPDATE Delivery_Address"
     update += " SET street_address = '" + street + "', city = '" + city + "', state = '" + state + "', zip = '" + zipcode + "'"
