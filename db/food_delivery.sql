@@ -104,7 +104,7 @@ CREATE TABLE Billing_Address (
 
 
 CREATE TABLE Order_Table (
-    order_id int,
+    order_id int AUTO_INCREMENT,
     customer_id int,
     restaurant_id int,
     driver_id int,
@@ -133,8 +133,6 @@ CREATE TABLE Menu_Item (
 );
 
 
-
-
 CREATE TABLE Common_Allergens(
     restaurant_id int,
     menu_item_id int,
@@ -142,8 +140,6 @@ CREATE TABLE Common_Allergens(
     PRIMARY KEY(restaurant_id, menu_item_id),
     FOREIGN KEY (restaurant_id, menu_item_id) REFERENCES Menu_Item(restaurant_id, menu_item_id) on delete cascade on update cascade
 );
-
-
 
 
 CREATE TABLE Restaurant_Review (
@@ -158,8 +154,6 @@ CREATE TABLE Restaurant_Review (
     FOREIGN KEY (restaurant_id) REFERENCES Restaurant(restaurant_id) on delete cascade on update cascade
 
 );
-
-
 
 CREATE TABLE MenuItem_Order (
     restaurant_id int,
@@ -1430,7 +1424,7 @@ INSERT INTO Common_Allergens(restaurant_id,menu_item_id, allergen) VALUES
 
 -- Menu Item Order
 INSERT INTO MenuItem_Order(restaurant_id,menu_item_id,customer_id,driver_id,order_id) VALUES
-    (1,9,47,16,4)
+     (1,9,47,16,4)
     ,(1,9,70,5,26)
     ,(1,9,20,5,56)
     ,(1,9,95,12,64)
@@ -1730,5 +1724,3 @@ INSERT INTO MenuItem_Order(restaurant_id,menu_item_id,customer_id,driver_id,orde
     ,(20,5,71,2,246)
     ,(20,5,46,10,265)
     ,(20,5,36,11,272);
-
-
