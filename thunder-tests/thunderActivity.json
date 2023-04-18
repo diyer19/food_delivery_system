@@ -140,5 +140,62 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "2915c4f9-536c-4945-b9c5-e32118e67c6d",
+    "colId": "history",
+    "containerId": "",
+    "name": "update_payment_info_1",
+    "url": "localhost:8001/c/customers/333-333-3333/payment_info",
+    "method": "PUT",
+    "sortNum": 0,
+    "created": "2023-04-18T02:43:14.841Z",
+    "modified": "2023-04-18T02:45:12.415Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"payment_number\": \"43252344323432353\",\n  \"payment_expiration\": \"4/23\",\n  \"payment_zip\": \"94311\",\n  \"payment_cvv\": \"503\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "8bceeea5-3a59-4915-af8b-06d34dc8710d",
+    "colId": "history",
+    "containerId": "",
+    "name": "update_payment_info_2",
+    "url": "localhost:8001/c/customers/333-333-3333/payment_info",
+    "method": "PUT",
+    "sortNum": 0,
+    "created": "2023-04-18T02:46:41.500Z",
+    "modified": "2023-04-18T02:46:41.500Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"payment_number\": \"9394937489379347\",\n  \"payment_expiration\": \"12/12\",\n  \"payment_zip\": \"49320\",\n  \"payment_cvv\": \"343\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "8a1434d1-1397-45aa-b0f9-5d7bebcd5d78",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:8001/c/customers/333-333-3333/payment_info",
+    "url": "localhost:8001/c/customers/333-333-3333/payment_info",
+    "method": "PUT",
+    "sortNum": 0,
+    "created": "2023-04-18T02:47:41.883Z",
+    "modified": "2023-04-18T02:47:41.883Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"payment_number\": \"9394937489379347\",\n  \"payment_expiration\": \"12/12\",\n  \"payment_zip\": \"49320\",\n  \"payment_cvv\": \"343\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]

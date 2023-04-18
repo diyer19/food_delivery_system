@@ -228,3 +228,33 @@ def update_delivery_address(phone_number):
 
 
 
+
+# update customer's payment info
+@customers.route('/customers/<phone_number>/payment_info', methods=['PUT'])
+def update_payment_info(phone_number):
+    cursor = db.get_db().cursor()
+
+    # getting update data
+    current_app.logger.info('Processing form data')
+    req_data = request.get_json()
+    current_app.logger.info(req_data)
+
+
+    # extracting the variables 
+    cc = str(req_data['payment_number'])
+    expiration = str(req_data['payment_expiration'])
+    zipcode = str(req_data['payment_zip'])
+    cvv = str(req_data['payment_cvv'])
+
+    update = "UPDATE Payment_Info"
+    update += " SET cc = '" + cc + "', expiration = '" + expiration + "', zip = '" + zipcode + "', cvv = '" + cvv + "'"
+    update += " WHERE customer_id = (SELECT customer_id FROM Customer WHERE phone_number = '{0}'".format(phone_number)
+    update += ")"
+
+    # executing and commiting the insert stmt 
+    cursor = db.get_db().cursor()
+    cursor.execute(update)
+    #can't commit the cursor, have to commit the db 
+    db.get_db().commit()
+
+    return "success"
