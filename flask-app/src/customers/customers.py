@@ -258,3 +258,89 @@ def update_payment_info(phone_number):
     db.get_db().commit()
 
     return "success"
+
+
+## Get all Restaurants from the DB
+@customers.route('/restaurants', methods=['GET'])
+def get_restaurants():
+    cursor = db.get_db().cursor()
+    cursor.execute('select distinct restaurant_name as label, restaurant_name as value from Restaurant')
+
+    # grab the column headers from the returned data
+    column_headers = [x[0] for x in cursor.description]
+
+    # create an empty dictionary object to use in 
+    # putting column headers together with data
+    json_data = []
+
+    # fetch all the data from the cursor
+    theData = cursor.fetchall()
+
+    # for each of the rows, zip the data elements together with
+    # the column headers. 
+    for row in theData:
+        json_data.append(dict(zip(column_headers, row)))
+
+    return jsonify(json_data)
+
+
+## Get all Menu Items from the DB
+@customers.route('/restaurants/<restaurant_name>', methods=['GET'])
+def get_menu_items(restaurant_name):
+    cursor = db.get_db().cursor()
+    insert_stmt = "select concat('$', price, ' - ', item_name) as label, concat('$', price, ' - ', item_name) as value from Menu_Item JOIN Restaurant R on Menu_Item.restaurant_id = R.restaurant_id where restaurant_name="
+    insert_stmt += "'{0}'".format(restaurant_name)
+    cursor.execute(insert_stmt)
+
+
+    # grab the column headers from the returned data
+    column_headers = [x[0] for x in cursor.description]
+
+    # create an empty dictionary object to use in 
+    # putting column headers together with data
+    json_data = []
+
+    # fetch all the data from the cursor
+    theData = cursor.fetchall()
+
+    # for each of the rows, zip the data elements together with
+    # the column headers. 
+    for row in theData:
+        json_data.append(dict(zip(column_headers, row)))
+
+    return jsonify(json_data)
+
+
+
+## Place a New Order
+@customers.route('/new_order', methods=['POST'])
+def post_new_order():
+    current_app.logger.info('Processing form data')
+
+    req_data = request.get_json()
+
+    current_app.logger.info(req_data)
+
+
+    # extracting the variables 
+    # this needs to match the widget input box names in Appsmith 
+    # ex: 'product_name', 'product_description', 'product_price', etc 
+    first_name = req_data['customer_firstname']
+    last_name = req_data['customer_lastname']
+    phone_number = req_data['customer_phone']
+    email = req_data['customer_email']
+
+    # constructing the query 
+
+    insert_stmt = 'insert into Order (first_name, last_name, phone_number, email) values ("'
+    insert_stmt += first_name + '", "'
+    insert_stmt += last_name + '", "'
+    insert_stmt += phone_number + '", "'
+    insert_stmt += email + '" )'
+
+
+    # executing anad commiting the insert stmt 
+    cursor = db.get_db().cursor()
+    cursor.execute(insert_stmt)
+    #can't commit the cursor, have to commit the db 
+    db.get_db().commit()
