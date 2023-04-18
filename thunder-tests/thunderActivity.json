@@ -102,5 +102,43 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "473bb1a5-ce07-4434-a50b-17246da3bb9f",
+    "colId": "history",
+    "containerId": "",
+    "name": "updateDeliveryAddress_1",
+    "url": "localhost:8001/c/customers/333-333-3333/delivery_address",
+    "method": "PUT",
+    "sortNum": 0,
+    "created": "2023-04-18T02:08:36.356Z",
+    "modified": "2023-04-18T02:09:35.925Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"delivery_street\": \"22 Roxbury Ave\",\n  \"delivery_city\": \"Montville\",\n  \"delivery_state\": \"NJ\",\n  \"delivery_zip\": \"12120\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "e847d9de-111c-4838-99f4-338c92f449e7",
+    "colId": "history",
+    "containerId": "",
+    "name": "updateDeliveryAddress_2",
+    "url": "localhost:8001/c/customers/333-333-3333/delivery_address",
+    "method": "PUT",
+    "sortNum": 0,
+    "created": "2023-04-18T02:08:36.356Z",
+    "modified": "2023-04-18T02:08:36.356Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"delivery_street\": \"212 Roxbury Ave\",\n  \"delivery_city\": \"New Haven\",\n  \"delivery_state\": \"MA\",\n  \"delivery_zip\": \"12140\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]

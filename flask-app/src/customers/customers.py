@@ -195,3 +195,36 @@ def update_billing_address(phone_number):
     db.get_db().commit()
 
     return "success"
+
+# update customer's delivery_address
+@customers.route('/customers/<phone_number>/delivery_address', methods=['PUT'])
+def update_delivery_address(phone_number):
+    cursor = db.get_db().cursor()
+
+    # getting update data
+    current_app.logger.info('Processing form data')
+    req_data = request.get_json()
+    current_app.logger.info(req_data)
+
+
+    # extracting the variables 
+    street = req_data['delivery_street']
+    city = req_data['delivery_city']
+    state = req_data['delivery_state']
+    zipcode = req_data['delivery_zip']
+
+    update = "UPDATE Delivery_Address"
+    update += " SET street_address = '" + street + "', city = '" + city + "', state = '" + state + "', zip = '" + zipcode + "'"
+    update += " WHERE customer_id = (SELECT customer_id FROM Customer WHERE phone_number = '{0}'".format(phone_number)
+    update += ")"
+
+    # executing and commiting the insert stmt 
+    cursor = db.get_db().cursor()
+    cursor.execute(update)
+    #can't commit the cursor, have to commit the db 
+    db.get_db().commit()
+
+    return "success"
+
+
+
