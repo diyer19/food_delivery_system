@@ -180,25 +180,6 @@
     "tests": []
   },
   {
-    "_id": "8a1434d1-1397-45aa-b0f9-5d7bebcd5d78",
-    "colId": "history",
-    "containerId": "",
-    "name": "localhost:8001/c/customers/333-333-3333/payment_info",
-    "url": "localhost:8001/c/customers/333-333-3333/payment_info",
-    "method": "PUT",
-    "sortNum": 0,
-    "created": "2023-04-18T02:47:41.883Z",
-    "modified": "2023-04-18T02:47:41.883Z",
-    "headers": [],
-    "params": [],
-    "body": {
-      "type": "json",
-      "raw": "{\n  \"payment_number\": \"9394937489379347\",\n  \"payment_expiration\": \"12/12\",\n  \"payment_zip\": \"49320\",\n  \"payment_cvv\": \"343\"\n}",
-      "form": []
-    },
-    "tests": []
-  },
-  {
     "_id": "f0b45638-c9cd-4749-a1b1-9463003040c0",
     "colId": "history",
     "containerId": "",

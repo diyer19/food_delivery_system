@@ -340,29 +340,32 @@ def post_new_order():
     # extracting the variables 
     # this needs to match the widget input box names in Appsmith 
     # ex: 'product_name', 'product_description', 'product_price', etc 
-    menu_items = req_data['menu_items']
-
-    # menu_items = json.loads(menu_items)
-    
-    # new_list = [element.replace('\\', "") for element in menu_items]
-
-    # for each in new_list: 
-    #     print(each)
-    #     list1.append(each) 
+    restaurant_name = req_data['Order_restaurant']
+    menu_item = req_data['menu_items1']
+    phone_number = req_data['customer_phone']
 
     # constructing the query 
 
-    # insert_stmt = 'insert into Order (first_name, last_name, phone_number, email) values ("'
-    # insert_stmt += first_name + '", "'
-    # insert_stmt += last_name + '", "'
-    # insert_stmt += phone_number + '", "'
-    # insert_stmt += email + '" )'
+    insert_stmt = 'insert into Order (first_name, last_name, phone_number, email) values ("'
+    insert_stmt += first_name + '", "'
+    insert_stmt += last_name + '", "'
+    insert_stmt += phone_number + '", "'
+    insert_stmt += email + '" )'
+
+    # insert_stmt = "INSERT INTO MenuItem_Order (restaurant_id, menu_item_id, customer_id, driver_id, order_id) "
+    # VALUES (
+    #     (SELECT restaurant_id FROM Restaurant WHERE restaurant_name = 'restaurant_name'),
+    #     (SELECT menu_item_id FROM Menu_Item WHERE item_name = 'item_name'),
+    #     (SELECT customer_id FROM Customer WHERE phone_number = 'customer_phone_number'),
+    #     (SELECT FLOOR(RAND() * 20) + 1),
+    #     (SELECT MAX(order_id) + 1 FROM Order_Table)
+    # );
 
 
-    # # executing anad commiting the insert stmt 
-    # cursor = db.get_db().cursor()
-    # cursor.execute(insert_stmt)
-    # #can't commit the cursor, have to commit the db 
-    # db.get_db().commit()
+    # executing anad commiting the insert stmt 
+    cursor = db.get_db().cursor()
+    cursor.execute(insert_stmt)
+    #can't commit the cursor, have to commit the db 
+    db.get_db().commit()
 
     return list1
