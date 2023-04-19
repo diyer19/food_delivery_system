@@ -350,16 +350,6 @@ def post_new_order():
     earnings = str(random.randint(10, 50))
     # constructing the query 
 
-    # order_stmt = "INSERT INTO Order_Table (customer_id, restaurant_id, driver_id, order_total, earnings) VALUES "
-    # order_stmt += "((SELECT customer_id FROM Customer WHERE phone_number = '"+phone_number+"'), "
-    # order_stmt += "(SELECT restaurant_id FROM Restaurant WHERE restaurant_name = '"+restaurant_name+"'), "
-    # order_stmt += driver_id + "," #driver_id, should be rand_int between 1-20 
-    # order_stmt += " (SELECT price FROM Menu_Item WHERE item_name = '"+menu_item+"' AND"
-    # order_stmt += " restaurant_id = (SELECT restaurant_id FROM Restaurant"
-    # order_stmt += " WHERE restaurant_name = '"+restaurant_name+"'))" 
-    # order_stmt += ", "+earnings+");" #should be rand int     
-
-
     order_stmt = "INSERT INTO Order_Table (customer_id, restaurant_id, driver_id, order_total, earnings) VALUES "
     order_stmt += "((SELECT customer_id FROM Customer WHERE phone_number = '"+phone_number+"'), "
     order_stmt += "(SELECT restaurant_id FROM Restaurant WHERE restaurant_name = '"+restaurant_name+"'), "
@@ -372,14 +362,6 @@ def post_new_order():
     cursor.execute(order_stmt)
     #can't commit the cursor, have to commit the db 
     db.get_db().commit()
-
-    # insert = "INSERT INTO MenuItem_Order (order_id, restaurant_id, menu_item_id, customer_id, driver_id) VALUES ("
-    # insert += "(SELECT MAX(order_id)  FROM Order_Table),"
-    # insert +="(SELECT restaurant_id FROM Restaurant WHERE restaurant_name = '"+restaurant_name+"'),"
-    # insert +="(SELECT menu_item_id FROM Menu_Item WHERE menu_item_id = '"+menu_item+"' AND "
-    # insert += "restaurant_id = (SELECT restaurant_id FROM Restaurant " 
-    # insert += "WHERE restaurant_name = '"+restaurant_name+"')),"
-    # insert += "(SELECT customer_id FROM Customer WHERE phone_number = '"+phone_number+"'), ("+driver_id+"));"
 
     insert = "INSERT INTO MenuItem_Order (order_id, restaurant_id, menu_item_id, customer_id, driver_id) VALUES ("
     insert += "(SELECT MAX(order_id)  FROM Order_Table),"
