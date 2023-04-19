@@ -338,5 +338,43 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "49f2bcd9-4420-4372-90b5-867a04677177",
+    "colId": "history",
+    "containerId": "",
+    "name": "update_MenuItem_1",
+    "url": "localhost:8001/r/restaurant/1",
+    "method": "PUT",
+    "sortNum": 0,
+    "created": "2023-04-19T04:22:29.736Z",
+    "modified": "2023-04-19T04:24:25.724Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"menu_item_name\": \"pasta\",\n  \"menu_description\": \"pesto pasta\",\n  \"menu_price\": 9\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "1685a17b-eaeb-43e0-9ade-599300cfc43a",
+    "colId": "history",
+    "containerId": "",
+    "name": "update_MenuItem_2",
+    "url": "localhost:8001/r/restaurant/2",
+    "method": "PUT",
+    "sortNum": 0,
+    "created": "2023-04-19T04:22:29.736Z",
+    "modified": "2023-04-19T04:25:09.972Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"menu_item_name\": \"cheese\",\n  \"menu_description\": \"feta\",\n  \"menu_price\": 10\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
