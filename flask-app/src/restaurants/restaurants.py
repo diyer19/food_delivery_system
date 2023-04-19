@@ -154,7 +154,7 @@ def get_restaurant_reviews(restaurant_name):
    cursor = db.get_db().cursor()
 
     # query
-   insert_stmt = "SELECT score, review, review date FROM Restaurant_Review WHERE restaurant_id = (SELECT restaurant_id FROM Restaurant WHERE restaurant_name ="
+   insert_stmt = "SELECT score, review, review_date FROM Restaurant_Review WHERE restaurant_id = (SELECT restaurant_id FROM Restaurant WHERE restaurant_name ="
    insert_stmt += "'{0}'".format(restaurant_name) + ")"
 
    cursor.execute(insert_stmt)
@@ -178,7 +178,7 @@ def get_avg_score(restaurant_name):
     cursor = db.get_db().cursor()
 
     #query
-    insert_stmt = "select avg(score) from Restaurant_Review join Restaurant R on Restaurant_Review.restaurant_id = "
+    insert_stmt = "select ROUND(avg(score), 2) as avg_score from Restaurant_Review join Restaurant R on Restaurant_Review.restaurant_id = "
     insert_stmt += "R.restaurant_id where restaurant_name='"+restaurant_name+"';"
 
     cursor.execute(insert_stmt)
@@ -198,7 +198,7 @@ def get_total_earnings(restaurant_name):
     cursor = db.get_db().cursor()
 
     # query
-    insert_stmt = "select sum(earnings) from Order_Table join Restaurant R on Order_Table.restaurant_id = R.restaurant_id where restaurant_name='" + restaurant_name + "'"
+    insert_stmt = "select concat('$', sum(earnings)) as sum_earnings from Order_Table join Restaurant R on Order_Table.restaurant_id = R.restaurant_id where restaurant_name='" + restaurant_name + "'"
     
     cursor.execute(insert_stmt)
 
