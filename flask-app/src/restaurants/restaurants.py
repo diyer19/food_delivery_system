@@ -84,3 +84,82 @@ def delete_new_restaurant():
     db.get_db().commit()
 
     return "Success"
+
+## Create a new menu item
+@restaurants.route('/new_menu_item/<phone_number>', methods=['POST'])
+def post_new_menu_item(phone_number):
+  current_app.logger.info('Processing form data')
+  req_data = request.get_json()
+  current_app.logger.info(req_data)
+
+
+  # extracting the variables
+  # this needs to match the widget input box names in Appsmith
+  # ex: 'product_name', 'product_description', 'product_price', etc
+  item_name = str(req_data['item_name'])
+  descrip = str(req_data['item_description'])
+  price = str(req_data['item_price'])
+
+
+  # constructing the query
+  insert_stmt = "insert into Menu_Item (menu_item_id, item_name, descrip, price, restaurant_id) VALUES (((select max(menu_item_id) from MenuItem_Order)+1),"
+  insert_stmt += item_name + '", "'
+  insert_stmt += descrip + '", "'
+  insert_stmt += price + '", "'
+  insert_stmt += "(SELECT distinct CONVERT((select restaurant_id from Restaurant"
+  insert_stmt += "where phone_number='989-829-7577'), CHAR) from Restaurant));"
+  
+  # executing anad commiting the insert stmt
+  cursor = db.get_db().cursor()
+  cursor.execute(insert_stmt)
+  #can't commit the cursor, have to commit the db
+  db.get_db().commit()
+
+
+
+
+## Get all Menu Items
+@restaurants.route('/menu_items/<restaurant_name>', methods=['GET'])
+def get_menu_items_rest(restaurant_name):
+   cursor = db.get_db().cursor()
+   insert_stmt = "select menu_item_id item_name from Menu_Item JOIN Restaurant R on Menu_Item.restaurant_id = R.restaurant_id where restaurant_name="
+   insert_stmt += "'{0}'".format(restaurant_name)
+   cursor.execute(insert_stmt)
+
+
+
+
+   # grab the column headers from the returned data
+   column_headers = [x[0] for x in cursor.description]
+
+
+   # create an empty dictionary object to use in
+   # putting column headers together with data
+   json_data = []
+
+
+   # fetch all the data from the cursor
+   theData = cursor.fetchall()
+
+
+   # for each of the rows, zip the data elements together with
+   # the column headers.
+   for row in theData:
+       json_data.append(dict(zip(column_headers, row)))
+
+
+   return jsonify(json_data)
+
+
+
+
+## Delete Menu Item
+@restaurants.route('/restaurant/<menu_item_id>', methods=['DELETE'])
+def delete_menu_item(menu_item_id):
+  cursor = db.get_db().cursor()
+  cursor.execute('DELETE FROM Menu_Item where menu_item_id=”{0}”'.format(menu_item_id))
+  db.get_db().commit()
+
+
+  return "Success"
+
