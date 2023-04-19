@@ -206,4 +206,38 @@ def get_restaurant_reviews(restaurant_name):
    return jsonify(json_data)
 
 
-#7: 
+# 7: get average restaurant score
+@restaurants.route('/avg_score/<restaurant_name>', methods=['GET'])
+def get_avg_score(restaurant_name):
+
+    cursor = db.get_db().cursor()
+
+    insert_stmt = "select avg(score) from Restaurant_Review join Restaurant R on Restaurant_Review.restaurant_id = R.restaurant_id where restaurant_name='" + restaurant_name + "'"
+    
+    cursor.execute(insert_stmt)
+
+    column_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(column_headers, row)))
+
+    return jsonify(json_data)
+
+# 8: get a restaurant's total earnings
+@restaurants.route('/restaurant_earnings/<restaurant_name>', methods=['GET'])
+def get_avg_score(restaurant_name):
+
+    cursor = db.get_db().cursor()
+
+    insert_stmt = "select sum(earnings) from Order_Table join Restaurant R on Order_Table.restaurant_id = R.restaurant_id where restaurant_name='" + restaurant_name + "'"
+    
+    cursor.execute(insert_stmt)
+
+    column_headers = [x[0] for x in cursor.description]
+    json_data = []
+    theData = cursor.fetchall()
+    for row in theData:
+        json_data.append(dict(zip(column_headers, row)))
+
+    return jsonify(json_data)
