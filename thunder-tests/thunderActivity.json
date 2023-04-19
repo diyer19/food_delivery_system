@@ -677,5 +677,43 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "af370e4b-5cfc-4810-a8a9-b180841bd313",
+    "colId": "history",
+    "containerId": "",
+    "name": "deleteRestaurant_1",
+    "url": "localhost:8001/r/delete_restaurant",
+    "method": "DELETE",
+    "sortNum": 0,
+    "created": "2023-04-19T19:45:05.062Z",
+    "modified": "2023-04-19T19:45:05.062Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"restaurant_name2\": \"Vimbo\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "f961e2cc-a40b-4d59-a8f5-012e718ba922",
+    "colId": "history",
+    "containerId": "",
+    "name": "deleteRestaurant_2",
+    "url": "localhost:8001/r/delete_restaurant",
+    "method": "DELETE",
+    "sortNum": 0,
+    "created": "2023-04-19T19:45:05.062Z",
+    "modified": "2023-04-19T19:50:40.363Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"restaurant_name2\": \"Twimm\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]

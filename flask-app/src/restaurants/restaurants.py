@@ -105,4 +105,36 @@ def update_menu_item(restaurant_name1, select_menu_item):
 
     return "success"
 
+## delete restaurant
+@restaurants.route('/delete_restaurant', methods=['DELETE'])
+def delete_order():
+    current_app.logger.info('Processing form data')
+    req_data = request.get_json()
+    current_app.logger.info(req_data)
+    
 
+    restaurant_cancel = str(req_data['restaurant_name2'])
+
+    # constructing the query
+    # 
+    # DELETE FROM Order_Table WHERE restaurant_id IN (SELECT restaurant_id FROM Restaurant WHERE restaurant_name = 'Vimbo');
+
+    # DELETE FROM Restaurant WHERE restaurant_name = 'Vimbo';
+
+    cancel_stmt = "DELETE FROM Order_Table WHERE restaurant_id IN (SELECT restaurant_id FROM Restaurant WHERE restaurant_name = '"+restaurant_cancel+"');"
+
+    # executing anad commiting the insert stmt 
+    cursor = db.get_db().cursor()
+    cursor.execute(cancel_stmt)
+    #can't commit the cursor, have to commit the db s
+    db.get_db().commit()
+
+    cancel_stmt1 = "DELETE FROM Restaurant WHERE restaurant_name = '"+restaurant_cancel+"';"
+
+    # executing anad commiting the insert stmt 
+    cursor = db.get_db().cursor()
+    cursor.execute(cancel_stmt1)
+    #can't commit the cursor, have to commit the db 
+    db.get_db().commit()
+
+    return  "success"

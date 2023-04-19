@@ -436,7 +436,7 @@ def get_orders_id(phone_number):
     return jsonify(json_data)
 
 
-## Place a New Order
+## Cancel an Order
 @customers.route('/cancel_order', methods=['DELETE'])
 def delete_order():
     current_app.logger.info('Processing form data')
