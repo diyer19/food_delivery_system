@@ -340,27 +340,32 @@ def post_new_order():
     # extracting the variables 
     # this needs to match the widget input box names in Appsmith 
     # ex: 'product_name', 'product_description', 'product_price', etc 
-    restaurant_name = req_data['Order_restaurant']
-    menu_item = req_data['menu_items1']
-    phone_number = req_data['customer_phone']
+    restaurant_name = str(req_data['Order_restaurant'])
+    menu_item = str(req_data['menu_items1'])
+    phone_number = str(req_data['customer_phone'])
 
+    # simulating choosing a driver 
+    driver_id = randint(1, 20)
     # constructing the query 
 
-    insert_stmt = 'insert into Order (first_name, last_name, phone_number, email) values ("'
-    insert_stmt += first_name + '", "'
-    insert_stmt += last_name + '", "'
-    insert_stmt += phone_number + '", "'
-    insert_stmt += email + '" )'
+    order_stmt = "INSERT INTO Order_Table (customer_id, restaurant_id, driver_id, order_total, earnings) VALUES "
+    order_stmt += "((SELECT customer_id FROM Customer WHERE phone_number = '"+phone_number+"'),"
+    order_stmt += "(SELECT restaurant_id FROM Restaurant WHERE restaurant_name = '"+restaurant_name+"'),"
+    order_stmt += driver_id + "," #driver_id, should be rand_int between 1-20 
+    order_stmt += "(SELECT price FROM Menu_Item WHERE item_name = '"+menu_item+"' AND"
+    order_stmt += " restaurant_id = (SELECT restaurant_id FROM Restaurant"
+    order_stmt += "WHERE restaurant_name = '"+restaurant_name+"'))" 
+    order_stmt += ", 20);" #should be rand int     
 
-    # insert_stmt = "INSERT INTO MenuItem_Order (restaurant_id, menu_item_id, customer_id, driver_id, order_id) "
-    # VALUES (
-    #     (SELECT restaurant_id FROM Restaurant WHERE restaurant_name = 'restaurant_name'),
-    #     (SELECT menu_item_id FROM Menu_Item WHERE item_name = 'item_name'),
-    #     (SELECT customer_id FROM Customer WHERE phone_number = 'customer_phone_number'),
-    #     (SELECT FLOOR(RAND() * 20) + 1),
-    #     (SELECT MAX(order_id) + 1 FROM Order_Table)
-    # );
-
+    insert = "INSERT INTO MenuItem_Order (order_id, restaurant_id, menu_item_id, customer_id, driver_id) VALUES ("
+    insert += "(SELECT MAX(order_id)  FROM Order_Table),"
+    insert+="(SELECT restaurant_id FROM Restaurant WHERE restaurant_name = '"+restaurant_name+"'),"
+    insert+="(SELECT menu_item_id FROM Menu_Item WHERE item_name = 'Beans - Wax' AND"
+    restaurant_id = (SELECT restaurant_id FROM Restaurant
+    WHERE restaurant_name = 'Fliptune')),
+    (SELECT customer_id FROM Customer WHERE phone_number = '114-885-3559'),
+    (14)
+);
 
     # executing anad commiting the insert stmt 
     cursor = db.get_db().cursor()
