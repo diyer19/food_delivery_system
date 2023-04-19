@@ -142,35 +142,30 @@ def post_new_menu_item():
 
 
 ## 4. Get all Menu Items
-@restaurants.route('/menu_items/<restaurant_name>', methods=['GET'])
-def get_menu_items_rest(restaurant_name):
-   cursor = db.get_db().cursor()
-   insert_stmt = "select menu_item_id item_name from Menu_Item JOIN Restaurant R on Menu_Item.restaurant_id = R.restaurant_id where restaurant_name="
-   insert_stmt += "'{0}'".format(restaurant_name) + ")"
-   cursor.execute(insert_stmt)
-
-   # grab the column headers from the returned data
-   column_headers = [x[0] for x in cursor.description]
+@restaurants.route('/restaurants/<restaurant_name>', methods=['GET'])
+def get_menu_items_restaurant(restaurant_name):
+    cursor = db.get_db().cursor()
+    insert_stmt = "select menu_item_id as value, item_name as label from Menu_Item JOIN Restaurant R on Menu_Item.restaurant_id = R.restaurant_id where restaurant_name="
+    insert_stmt += "'{0}'".format(restaurant_name)
+    cursor.execute(insert_stmt)
 
 
-   # create an empty dictionary object to use in
-   # putting column headers together with data
-   json_data = []
+    # grab the column headers from the returned data
+    column_headers = [x[0] for x in cursor.description]
 
+    # create an empty dictionary object to use in 
+    # putting column headers together with data
+    json_data = []
 
-   # fetch all the data from the cursor
-   theData = cursor.fetchall()
+    # fetch all the data from the cursor
+    theData = cursor.fetchall()
 
+    # for each of the rows, zip the data elements together with
+    # the column headers. 
+    for row in theData:
+        json_data.append(dict(zip(column_headers, row)))
 
-   # for each of the rows, zip the data elements together with
-   # the column headers.
-   for row in theData:
-       json_data.append(dict(zip(column_headers, row)))
-
-
-   return jsonify(json_data)
-
-
+    return jsonify(json_data)
 
 
 ## 5. Delete Menu Item
