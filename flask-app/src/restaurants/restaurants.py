@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify, make_response, current_app
 import json
 from src import db
+import random
 
 
 restaurants = Blueprint('restaurants', __name__)
@@ -19,6 +20,7 @@ def post_new_restaurant():
     # extracting the variables 
     # this needs to match the widget input box names in Appsmith 
     # ex: 'product_name', 'product_description', 'product_price', etc 
+    avg_delivery = str(random.randint(1, 20))
     restaurant_name = req_data['restaurant_name']
     phone_number = req_data['restaurant_phone']
     street_address = req_data['restaurant_street']
@@ -28,12 +30,13 @@ def post_new_restaurant():
 
     # constructing the query 
 
-    insert_stmt = 'insert into Restaurant (restaurant_name, phone_number, street_address, city, state, zip) values ("'
+    insert_stmt = 'insert into Restaurant (restaurant_name, phone_number, street_address, city, state, avg_delivery_time, zip) values ("'
     insert_stmt += restaurant_name + '", "'
     insert_stmt += phone_number + '", "'
     insert_stmt += street_address + '", "'
     insert_stmt += city + '", "'
     insert_stmt += state + '", "'
+    insert_stmt += avg_delivery + '", "'
     insert_stmt += zicode + '" )'
 
 

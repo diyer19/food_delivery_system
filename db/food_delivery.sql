@@ -15,7 +15,7 @@ CREATE TABLE Customer (
 
 
 CREATE TABLE Restaurant (
-    restaurant_id int PRIMARY KEY,
+    restaurant_id int PRIMARY KEY AUTO_INCREMENT,
     restaurant_name varchar(50) not null,
     phone_number varchar(50) not null UNIQUE,
     avg_delivery_time int not null,

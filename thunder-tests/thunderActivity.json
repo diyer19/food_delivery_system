@@ -300,5 +300,43 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "3367f27e-d079-4d6a-b311-a54f2ac6dba8",
+    "colId": "history",
+    "containerId": "",
+    "name": "newRestaurant_1",
+    "url": "localhost:8001/r/new_restaurant",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-04-19T03:42:21.719Z",
+    "modified": "2023-04-19T03:42:40.266Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"restaurant_name\": \"Bgood\",\n  \"restaurant_phone\": \"981-444-8989\",\n  \"restaurant_street\": \"88 State St\",\n  \"restaurant_city\": \"Boston\",\n  \"restaurant_state\": \"MA\",\n  \"restaurant_zip\": \"02115\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "26508b96-713b-4b03-8397-d07fb35e79d8",
+    "colId": "history",
+    "containerId": "",
+    "name": "newRestaurant_2",
+    "url": "localhost:8001/r/new_restaurant",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-04-19T03:42:21.719Z",
+    "modified": "2023-04-19T03:56:49.392Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"restaurant_name\": \"Tatte\",\n  \"restaurant_phone\": \"778-229-0909\",\n  \"restaurant_street\": \"34 State St\",\n  \"restaurant_city\": \"Boston\",\n  \"restaurant_state\": \"MA\",\n  \"restaurant_zip\": \"02116\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
