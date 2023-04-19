@@ -405,3 +405,32 @@ def get_orders(phone_number):
         json_data.append(dict(zip(column_headers, row)))
 
     return jsonify(json_data)
+
+## Get Orders
+@customers.route('/order_id/<phone_number>', methods=['GET'])
+def get_orders_id(phone_number):
+    cursor = db.get_db().cursor()
+
+    select = "SELECT order_id as label, order_id as value FROM Order_Table JOIN Customer ON Order_Table.customer_id = Customer.customer_id"
+    select += " WHERE Customer.phone_number = '" + phone_number + "';"
+
+
+    cursor.execute(select)
+
+
+    # grab the column headers from the returned data
+    column_headers = [x[0] for x in cursor.description]
+
+    # create an empty dictionary object to use in 
+    # putting column headers together with data
+    json_data = []
+
+    # fetch all the data from the cursor
+    theData = cursor.fetchall()
+
+    # for each of the rows, zip the data elements together with
+    # the column headers. 
+    for row in theData:
+        json_data.append(dict(zip(column_headers, row)))
+
+    return jsonify(json_data)
