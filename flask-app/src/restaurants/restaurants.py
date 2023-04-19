@@ -115,8 +115,9 @@ def post_new_menu_item():
   # extracting the variables
   # this needs to match the widget input box names in Appsmith
   # ex: 'product_name', 'product_description', 'product_price', etc
-  restaurant_id = str(req_data['restaurant_id'])
-  item_id = str(req_data['item_id'])
+  
+item_id = str(req_data['item_id'])
+restaurant_id = str(req_data['restaurant_id'])
   item_name = str(req_data['item_name'])
   descrip = str(req_data['item_description'])
   price = str(req_data['item_price'])
