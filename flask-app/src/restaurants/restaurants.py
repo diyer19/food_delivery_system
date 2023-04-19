@@ -26,7 +26,7 @@ def post_new_restaurant():
     street_address = req_data['restaurant_street']
     city = req_data['restaurant_city']
     state = req_data['restaurant_state']
-    zicode = req_data['restaurant_zip']
+    zicode = str(req_data['restaurant_zip'])
 
     # constructing the query 
 
@@ -105,8 +105,8 @@ def delete_restaurant():
     # return "Success"
 
 ## 3. Create a new menu item
-@restaurants.route('/new_menu_item/<restaurant_name>', methods=['POST'])
-def post_new_menu_item(restaurant_name):
+@restaurants.route('/new_menu_item/', methods=['POST'])
+def post_new_menu_item():
   current_app.logger.info('Processing form data')
   req_data = request.get_json()
   current_app.logger.info(req_data)

@@ -438,16 +438,16 @@
     "colId": "history",
     "containerId": "",
     "name": "new_MenuItem_1",
-    "url": "localhost:8001/r/new_menu_item/Vimbo",
+    "url": "localhost:8001/r/new_menu_item",
     "method": "POST",
     "sortNum": 0,
     "created": "2023-04-19T05:21:16.709Z",
-    "modified": "2023-04-19T05:50:17.894Z",
+    "modified": "2023-04-19T16:48:51.549Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"restaurant_id\":9,\n  \"item_id\": 198,\n  \"item_name\": \"pizza\",\n  \"item_description\": \"cheese\",\n  \"item_price\": 10\n}",
+      "raw": "{\n  \"restaurant_id\":9,\n  \"item_id\": 200,\n  \"item_name\": \"pizza\",\n  \"item_description\": \"cheese\",\n  \"item_price\": 10\n}",
       "form": []
     },
     "tests": []
