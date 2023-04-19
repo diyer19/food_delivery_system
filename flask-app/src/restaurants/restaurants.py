@@ -28,7 +28,7 @@ def post_new_restaurant():
 
     # constructing the query 
 
-    insert_stmt = 'insert into Restaurants (restaurant_name, phone_number, street_address, city, state, zip) values ("'
+    insert_stmt = 'insert into Restaurant (restaurant_name, phone_number, street_address, city, state, zip) values ("'
     insert_stmt += restaurant_name + '", "'
     insert_stmt += phone_number + '", "'
     insert_stmt += street_address + '", "'
@@ -68,7 +68,7 @@ def delete_new_restaurant():
 
     # constructing the query 
 
-    delete_stmt = 'delete Restaurants (restaurant_name, phone_number, street_address, city, state, zip) values ("'
+    delete_stmt = 'delete Restaurant (restaurant_name, phone_number, street_address, city, state, zip) values ("'
     delete_stmt += restaurant_name + '", "'
     delete_stmt += phone_number + '", "'
     delete_stmt += street_address + '", "'
