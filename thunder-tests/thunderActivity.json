@@ -592,5 +592,43 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "3c0bf45a-95e3-4d52-84d0-8c31da71c3db",
+    "colId": "history",
+    "containerId": "",
+    "name": "CancelOrder_1",
+    "url": "localhost:8001/c/cancel_order",
+    "method": "DELETE",
+    "sortNum": 0,
+    "created": "2023-04-19T17:31:38.338Z",
+    "modified": "2023-04-19T17:31:38.338Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"menu_items1\":\"150\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "2aad6172-630f-4b2b-b5c7-1c878022d375",
+    "colId": "history",
+    "containerId": "",
+    "name": "CancelOrder_2",
+    "url": "localhost:8001/c/cancel_order",
+    "method": "DELETE",
+    "sortNum": 0,
+    "created": "2023-04-19T17:31:38.338Z",
+    "modified": "2023-04-19T17:32:02.162Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"menu_items1\":\"140\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]

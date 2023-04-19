@@ -434,3 +434,30 @@ def get_orders_id(phone_number):
         json_data.append(dict(zip(column_headers, row)))
 
     return jsonify(json_data)
+
+
+## Place a New Order
+@customers.route('/cancel_order', methods=['DELETE'])
+def delete_order():
+    current_app.logger.info('Processing form data')
+
+    req_data = request.get_json()
+
+    current_app.logger.info(req_data)
+    
+    # extracting the variables 
+    # this needs to match the widget input box names in Appsmith 
+    # ex: 'product_name', 'product_description', 'product_price', etc 
+    order_cancel = str(req_data['menu_items1'])
+
+    # constructing the query 
+
+    cancel_stmt = "DELETE FROM Order_Table WHERE order_id = "+order_cancel
+
+    # executing anad commiting the insert stmt 
+    cursor = db.get_db().cursor()
+    cursor.execute(cancel_stmt)
+    #can't commit the cursor, have to commit the db 
+    db.get_db().commit()
+
+    return  "success"
