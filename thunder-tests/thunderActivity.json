@@ -363,11 +363,11 @@
     "colId": "history",
     "containerId": "",
     "name": "update_MenuItem_2",
-    "url": "localhost:8001/r/restaurant/2",
+    "url": "localhost:8001/r/restaurant/Vimbo/Cafe Royale",
     "method": "PUT",
     "sortNum": 0,
     "created": "2023-04-19T04:22:29.736Z",
-    "modified": "2023-04-19T04:25:09.972Z",
+    "modified": "2023-04-19T17:59:42.300Z",
     "headers": [],
     "params": [],
     "body": {

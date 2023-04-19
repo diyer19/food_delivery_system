@@ -116,8 +116,8 @@ def post_new_menu_item():
   # this needs to match the widget input box names in Appsmith
   # ex: 'product_name', 'product_description', 'product_price', etc
   
-item_id = str(req_data['item_id'])
-restaurant_id = str(req_data['restaurant_id'])
+  item_id = str(req_data['item_id'])
+  restaurant_id = str(req_data['restaurant_id'])
   item_name = str(req_data['item_name'])
   descrip = str(req_data['item_description'])
   price = str(req_data['item_price'])
@@ -192,14 +192,15 @@ def update_menu_item(rest_name, menu_item_name):
 
 
     # extracting the variables 
-    rest_name = str(req_data['menu_item_restaurant'])
+    #rest_name = str(req_data['menu_item_restaurant'])
     menu_item_name = str(req_data['menu_item_name'])
     descrip = str(req_data['menu_description'])
     price = str(req_data['menu_price'])
 
     update = "UPDATE Menu_Item"
-    update += " SET item_name = '" + name + "', descrip = '" + descrip + "', price = '" + price + "'"
-    update += " WHERE menu_item_name = '{0}'".format(menu_item_name) + " AND restaurant_name = '{0}'".format(rest_name)
+    update += " SET item_name = '" + menu_item_name + "', descrip = '" + descrip + "', price = '" + price + "'"
+    update += " WHERE menu_item_name = '{0}'".format(menu_item_name) + " AND (SELECT restaurant_id from Restaurant WHERE restaurant_name = '{0}'".format(rest_name) 
+    update += ")"
 
     # executing and commiting the insert stmt 
     cursor = db.get_db().cursor()
