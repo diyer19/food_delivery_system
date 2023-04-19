@@ -107,7 +107,7 @@ def update_menu_item(restaurant_name1, select_menu_item):
 
 ## delete restaurant
 @restaurants.route('/delete_restaurant', methods=['DELETE'])
-def delete_order():
+def delete_restaurant():
     current_app.logger.info('Processing form data')
     req_data = request.get_json()
     current_app.logger.info(req_data)
