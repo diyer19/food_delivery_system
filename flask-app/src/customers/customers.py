@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify, make_response, current_app
 import json
 from src import db
+import random
 
 
 customers = Blueprint('customers', __name__)
@@ -334,8 +335,6 @@ def post_new_order():
     req_data = request.get_json()
 
     current_app.logger.info(req_data)
-
-    list1 = []
     
     # extracting the variables 
     # this needs to match the widget input box names in Appsmith 
@@ -343,34 +342,55 @@ def post_new_order():
     restaurant_name = str(req_data['Order_restaurant'])
     menu_item = str(req_data['menu_items1'])
     phone_number = str(req_data['customer_phone'])
+    order_total = str(req_data['Text7'])
+    order_total = order_total.replace("$", "")
 
     # simulating choosing a driver 
-    driver_id = randint(1, 20)
+    driver_id = str(random.randint(1, 20))
+    earnings = str(random.randint(10, 50))
     # constructing the query 
 
-    order_stmt = "INSERT INTO Order_Table (customer_id, restaurant_id, driver_id, order_total, earnings) VALUES "
-    order_stmt += "((SELECT customer_id FROM Customer WHERE phone_number = '"+phone_number+"'),"
-    order_stmt += "(SELECT restaurant_id FROM Restaurant WHERE restaurant_name = '"+restaurant_name+"'),"
-    order_stmt += driver_id + "," #driver_id, should be rand_int between 1-20 
-    order_stmt += "(SELECT price FROM Menu_Item WHERE item_name = '"+menu_item+"' AND"
-    order_stmt += " restaurant_id = (SELECT restaurant_id FROM Restaurant"
-    order_stmt += "WHERE restaurant_name = '"+restaurant_name+"'))" 
-    order_stmt += ", 20);" #should be rand int     
+    # order_stmt = "INSERT INTO Order_Table (customer_id, restaurant_id, driver_id, order_total, earnings) VALUES "
+    # order_stmt += "((SELECT customer_id FROM Customer WHERE phone_number = '"+phone_number+"'), "
+    # order_stmt += "(SELECT restaurant_id FROM Restaurant WHERE restaurant_name = '"+restaurant_name+"'), "
+    # order_stmt += driver_id + "," #driver_id, should be rand_int between 1-20 
+    # order_stmt += " (SELECT price FROM Menu_Item WHERE item_name = '"+menu_item+"' AND"
+    # order_stmt += " restaurant_id = (SELECT restaurant_id FROM Restaurant"
+    # order_stmt += " WHERE restaurant_name = '"+restaurant_name+"'))" 
+    # order_stmt += ", "+earnings+");" #should be rand int     
 
-    insert = "INSERT INTO MenuItem_Order (order_id, restaurant_id, menu_item_id, customer_id, driver_id) VALUES ("
-    insert += "(SELECT MAX(order_id)  FROM Order_Table),"
-    insert+="(SELECT restaurant_id FROM Restaurant WHERE restaurant_name = '"+restaurant_name+"'),"
-    insert+="(SELECT menu_item_id FROM Menu_Item WHERE item_name = 'Beans - Wax' AND"
-    restaurant_id = (SELECT restaurant_id FROM Restaurant
-    WHERE restaurant_name = 'Fliptune')),
-    (SELECT customer_id FROM Customer WHERE phone_number = '114-885-3559'),
-    (14)
-);
+
+    order_stmt = "INSERT INTO Order_Table (customer_id, restaurant_id, driver_id, order_total, earnings) VALUES "
+    order_stmt += "((SELECT customer_id FROM Customer WHERE phone_number = '"+phone_number+"'), "
+    order_stmt += "(SELECT restaurant_id FROM Restaurant WHERE restaurant_name = '"+restaurant_name+"'), "
+    order_stmt += driver_id + "," #driver_id, should be rand_int between 1-20 
+    order_stmt += order_total 
+    order_stmt += ", "+earnings+");" #should be rand int     
 
     # executing anad commiting the insert stmt 
     cursor = db.get_db().cursor()
-    cursor.execute(insert_stmt)
+    cursor.execute(order_stmt)
     #can't commit the cursor, have to commit the db 
     db.get_db().commit()
 
-    return list1
+    # insert = "INSERT INTO MenuItem_Order (order_id, restaurant_id, menu_item_id, customer_id, driver_id) VALUES ("
+    # insert += "(SELECT MAX(order_id)  FROM Order_Table),"
+    # insert +="(SELECT restaurant_id FROM Restaurant WHERE restaurant_name = '"+restaurant_name+"'),"
+    # insert +="(SELECT menu_item_id FROM Menu_Item WHERE menu_item_id = '"+menu_item+"' AND "
+    # insert += "restaurant_id = (SELECT restaurant_id FROM Restaurant " 
+    # insert += "WHERE restaurant_name = '"+restaurant_name+"')),"
+    # insert += "(SELECT customer_id FROM Customer WHERE phone_number = '"+phone_number+"'), ("+driver_id+"));"
+
+    insert = "INSERT INTO MenuItem_Order (order_id, restaurant_id, menu_item_id, customer_id, driver_id) VALUES ("
+    insert += "(SELECT MAX(order_id)  FROM Order_Table),"
+    insert +="(SELECT restaurant_id FROM Restaurant WHERE restaurant_name = '"+restaurant_name+"'),"
+    insert += menu_item+","
+    insert += "(SELECT customer_id FROM Customer WHERE phone_number = '"+phone_number+"'), ("+driver_id+"));"
+
+    # executing anad commiting the insert stmt 
+    cursor = db.get_db().cursor()
+    cursor.execute(insert)
+    #can't commit the cursor, have to commit the db 
+    db.get_db().commit()
+
+    return  "success"

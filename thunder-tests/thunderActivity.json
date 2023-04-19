@@ -262,5 +262,43 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "0873ca8e-23be-44c9-8f08-14a824db8a14",
+    "colId": "history",
+    "containerId": "",
+    "name": "postOrder_1",
+    "url": "localhost:8001/c/new_order",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-04-19T02:59:17.896Z",
+    "modified": "2023-04-19T03:25:39.005Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"Order_restaurant\": \"Vimbo\",\n  \"menu_items1\": 81,\n  \"customer_phone\": \"114-885-3559\",\n  \"Text7\": \"87\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "f5ccb73f-a0ba-49f6-a8b3-feb1074e1f55",
+    "colId": "history",
+    "containerId": "",
+    "name": "postOrder_2",
+    "url": "localhost:8001/c/new_order",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-04-19T02:59:17.896Z",
+    "modified": "2023-04-19T03:00:47.362Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"Order_restaurant\": \"Fliptune\",\n  \"menu_items1\": \"Beans - Wax\",\n  \"customer_phone\": \"114-885-3559\"\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
