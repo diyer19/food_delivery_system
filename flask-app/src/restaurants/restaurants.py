@@ -105,7 +105,7 @@ def update_menu_item(restaurant_name1, select_menu_item):
 
     return "success"
 
-## delete restaurant
+## 4. delete restaurant
 @restaurants.route('/delete_restaurant', methods=['DELETE'])
 def delete_restaurant():
     current_app.logger.info('Processing form data')
@@ -138,3 +138,72 @@ def delete_restaurant():
     db.get_db().commit()
 
     return  "success"
+
+
+## 5. get restaurant orders
+@restaurants.route('/orders/<restaurant_name>', methods=['GET'])
+def get_restaurant_orders(restaurant_name):
+   
+   cursor = db.get_db().cursor()
+
+   insert_stmt = "SELECT order_id, order_total, time_placed, time_delivered, time_picked_up FROM Order_Table WHERE restaurant_id = (SELECT restaurant_id FROM Restaurant WHERE restaurant_name = "
+   insert_stmt += "'{0}'".format(restaurant_name) + ")"
+
+   cursor.execute(insert_stmt)
+
+   # grab the column headers from the returned data
+   column_headers = [x[0] for x in cursor.description]
+
+
+   # create an empty dictionary object to use in
+   # putting column headers together with data
+   json_data = []
+
+
+   # fetch all the data from the cursor
+   theData = cursor.fetchall()
+
+
+   # for each of the rows, zip the data elements together with
+   # the column headers.
+   for row in theData:
+       json_data.append(dict(zip(column_headers, row)))
+
+
+   return jsonify(json_data)
+
+
+## 6. get restaurant reviews
+@restaurants.route('/restaurant_reviews/<restaurant_name>', methods=['GET'])
+def get_restaurant_reviews(restaurant_name):
+   
+   cursor = db.get_db().cursor()
+
+   insert_stmt = "SELECT score, review, review date FROM Restaurant_Review WHERE restaurant_id = (SELECT restaurant_id FROM Restaurant WHERE restaurant_name ="
+   insert_stmt += "'{0}'".format(restaurant_name) + ")"
+
+   cursor.execute(insert_stmt)
+
+   # grab the column headers from the returned data
+   column_headers = [x[0] for x in cursor.description]
+
+
+   # create an empty dictionary object to use in
+   # putting column headers together with data
+   json_data = []
+
+
+   # fetch all the data from the cursor
+   theData = cursor.fetchall()
+
+
+   # for each of the rows, zip the data elements together with
+   # the column headers.
+   for row in theData:
+       json_data.append(dict(zip(column_headers, row)))
+
+
+   return jsonify(json_data)
+
+
+#7: 
