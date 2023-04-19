@@ -22,7 +22,7 @@ CREATE TABLE Restaurant (
     street_address varchar(100) not null,
     city varchar(50) not null,
     state varchar(50) not null,
-    zip int not null
+    zip int not null,
     PRIMARY KEY (restaurant_id)
 );
 
