@@ -1,6 +1,4 @@
-# Team Name : The Delivery Guys
-
-The Delivery Guys
+# The Delivery Guys
 
 The Delivery Guys application seeks to provide an all inclusive end-to-end food ordering solution. The app’s specifications are tailored to two user personas: customers and restaurants. The use-case this app delivers for customers (generic users) is to allow them to explore an extensive array of dining establishments. Once a user browses the available restaurants and has identified the product they would like, they can place an order on the app. Restaurant owners are able to add their restaurant to the app for the customer to select. This app also allows restaurant owners to see all the orders placed as well as see the reviews given to the restaurant. The Delivery Guys aims to consolidate the gap between these three end-users and provide an optimized food delivery ecosystem.
 
