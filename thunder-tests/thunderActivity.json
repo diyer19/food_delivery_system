@@ -715,5 +715,61 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "bab8b3f4-b038-4057-9976-ea500bb20a8f",
+    "colId": "history",
+    "containerId": "",
+    "name": "getAverageScore_2",
+    "url": "localhost:8001/r/avg_score/Vimbo",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-19T20:27:38.607Z",
+    "modified": "2023-04-19T20:27:38.607Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "75d3b814-e0b4-4360-bf33-9947b4f4039b",
+    "colId": "history",
+    "containerId": "",
+    "name": "getAverageScore_1",
+    "url": "localhost:8001/r/avg_score/Photolist",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-19T20:28:09.889Z",
+    "modified": "2023-04-19T20:28:09.889Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "f8bec661-d2b1-4d0e-a356-cb5d05a529f6",
+    "colId": "history",
+    "containerId": "",
+    "name": "getEarnings_1",
+    "url": "localhost:8001/r/restaurant_earnings/Vimbo",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-19T20:33:33.045Z",
+    "modified": "2023-04-19T20:33:33.045Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "fd0199f8-037a-40f4-9151-d2dae65b3853",
+    "colId": "history",
+    "containerId": "",
+    "name": "getEarnings_2",
+    "url": "localhost:8001/r/restaurant_earnings/Photolist",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-19T20:33:33.045Z",
+    "modified": "2023-04-19T20:33:56.028Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
