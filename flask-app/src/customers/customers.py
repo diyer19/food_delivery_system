@@ -377,7 +377,7 @@ def post_new_order():
 
     return  "success"
 
-## Get all Menu Items from the DB
+## Get Orders
 @customers.route('/orders/<phone_number>', methods=['GET'])
 def get_orders(phone_number):
     cursor = db.get_db().cursor()
