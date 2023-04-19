@@ -180,8 +180,8 @@ def delete_menu_item(menu_item_id):
 
 
 ## 6. Update MenuItem
-@restaurants.route('/restaurant/<menu_item_id>', methods=['PUT'])
-def update_menu_item(menu_item_id):
+@restaurants.route('/restaurant/<restaurant_name>/<menu_item_name>', methods=['PUT'])
+def update_menu_item(rest_name, menu_item_name):
     cursor = db.get_db().cursor()
 
     # getting update data
@@ -191,13 +191,14 @@ def update_menu_item(menu_item_id):
 
 
     # extracting the variables 
-    name = str(req_data['menu_item_name'])
+    rest_name = str(req_data['menu_item_restaurant'])
+    menu_item_name = str(req_data['menu_item_name'])
     descrip = str(req_data['menu_description'])
     price = str(req_data['menu_price'])
 
     update = "UPDATE Menu_Item"
     update += " SET item_name = '" + name + "', descrip = '" + descrip + "', price = '" + price + "'"
-    update += " WHERE menu_item_id = '{0}'".format(menu_item_id)
+    update += " WHERE menu_item_name = '{0}'".format(menu_item_name) + " AND restaurant_name = '{0}'".format(rest_name)
 
     # executing and commiting the insert stmt 
     cursor = db.get_db().cursor()
