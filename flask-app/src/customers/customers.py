@@ -6,7 +6,7 @@ import random
 
 customers = Blueprint('customers', __name__)
 
-# Get all customers from the DB
+# 1. Get all customers from the DB
 @customers.route('/customers', methods=['GET'])
 def get_customers():
     cursor = db.get_db().cursor()
@@ -22,7 +22,7 @@ def get_customers():
     the_response.mimetype = 'application/json'
     return the_response
 
-# Get customer details for customer with a particular number
+# 2. Get customer details for customer with a particular number
 @customers.route('/customers/<phone_number>', methods=['GET'])
 def get_customer_id(phone_number):
     cursor = db.get_db().cursor()
@@ -49,7 +49,7 @@ def get_customer_id(phone_number):
     the_response.mimetype = 'application/json'
     return the_response
 
-# Post Customer
+# 3. Post Customer
 @customers.route('/new_customer', methods=['POST'])
 def post_new_customer():
     current_app.logger.info('Processing form data')
@@ -167,7 +167,7 @@ def post_new_customer():
 
     return "Success"
 
-# update customer's billing_address
+# 4. update customer's billing_address
 @customers.route('/customers/<phone_number>/billing_address', methods=['PUT'])
 def update_billing_address(phone_number):
     cursor = db.get_db().cursor()
@@ -197,7 +197,7 @@ def update_billing_address(phone_number):
 
     return "success"
 
-# update customer's delivery_address
+# 5. update customer's delivery_address
 @customers.route('/customers/<phone_number>/delivery_address', methods=['PUT'])
 def update_delivery_address(phone_number):
     cursor = db.get_db().cursor()
@@ -230,7 +230,7 @@ def update_delivery_address(phone_number):
 
 
 
-# update customer's payment info
+# 6. update customer's payment info
 @customers.route('/customers/<phone_number>/payment_info', methods=['PUT'])
 def update_payment_info(phone_number):
     cursor = db.get_db().cursor()
@@ -261,7 +261,7 @@ def update_payment_info(phone_number):
     return "success"
 
 
-## Get all Restaurants from the DB
+## 7. Get all Restaurants from the DB
 @customers.route('/restaurants', methods=['GET'])
 def get_restaurants():
     cursor = db.get_db().cursor()
@@ -285,7 +285,7 @@ def get_restaurants():
     return jsonify(json_data)
 
 
-## Get all Menu Items from the DB
+## 8. Get all Menu Items from the DB
 @customers.route('/restaurants/<restaurant_name>', methods=['GET'])
 def get_menu_items(restaurant_name):
     cursor = db.get_db().cursor()
@@ -311,7 +311,7 @@ def get_menu_items(restaurant_name):
 
     return jsonify(json_data)
 
-## Get all Menu Items from the DB
+## 9. Get all Menu Items from the DB
 @customers.route('/total/<menu_item_id>', methods=['GET'])
 def get_total(menu_item_id):
     cursor = db.get_db().cursor()
@@ -327,7 +327,7 @@ def get_total(menu_item_id):
 
     return jsonify(json_data)
 
-## Place a New Order
+## 10. Place a New Order
 @customers.route('/new_order', methods=['POST'])
 def post_new_order():
     current_app.logger.info('Processing form data')
@@ -377,7 +377,7 @@ def post_new_order():
 
     return  "success"
 
-## Get Orders
+## 11. Get Orders
 @customers.route('/orders/<phone_number>', methods=['GET'])
 def get_orders(phone_number):
     cursor = db.get_db().cursor()
@@ -406,7 +406,7 @@ def get_orders(phone_number):
 
     return jsonify(json_data)
 
-## Get Orders
+## 12. Get Orders
 @customers.route('/order_id/<phone_number>', methods=['GET'])
 def get_orders_id(phone_number):
     cursor = db.get_db().cursor()

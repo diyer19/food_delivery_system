@@ -7,7 +7,7 @@ import random
 restaurants = Blueprint('restaurants', __name__)
 
 
-# Post Restaurant
+# 1. Post Restaurant
 @restaurants.route('/new_restaurant', methods=['POST'])
 def post_new_restaurant():
     current_app.logger.info('Processing form data')
@@ -49,7 +49,7 @@ def post_new_restaurant():
     return "Success"
 
 
-# Delete Restaurant
+# 2. Delete Restaurant
 @restaurants.route('/remove_restaurant/<restaurant_id>', methods=['DELETE'])
 def delete_restaurant():
   current_app.logger.info('Processing form data')
@@ -104,7 +104,7 @@ def delete_restaurant():
 
     # return "Success"
 
-## Create a new menu item
+## 3. Create a new menu item
 @restaurants.route('/new_menu_item/<restaurant_name>', methods=['POST'])
 def post_new_menu_item(restaurant_name):
   current_app.logger.info('Processing form data')
@@ -141,7 +141,7 @@ def post_new_menu_item(restaurant_name):
 
 
 
-## Get all Menu Items
+## 4. Get all Menu Items
 @restaurants.route('/menu_items/<restaurant_name>', methods=['GET'])
 def get_menu_items_rest(restaurant_name):
    cursor = db.get_db().cursor()
@@ -173,7 +173,7 @@ def get_menu_items_rest(restaurant_name):
 
 
 
-## Delete Menu Item
+## 5. Delete Menu Item
 @restaurants.route('/remove_menu_item/<menu_item_id>', methods=['DELETE'])
 def delete_menu_item(menu_item_id):
   cursor = db.get_db().cursor()
@@ -184,7 +184,7 @@ def delete_menu_item(menu_item_id):
   return "Success"
 
 
-## Update MenuItem
+## 6. Update MenuItem
 @restaurants.route('/restaurant/<menu_item_id>', methods=['PUT'])
 def update_menu_item(menu_item_id):
     cursor = db.get_db().cursor()
@@ -213,7 +213,7 @@ def update_menu_item(menu_item_id):
     return "success"
 
 
-## Get all Reviews for this Restaurant
+## 7. Get all Reviews for this Restaurant
 @restaurants.route('/restaurant_reviews/<restaurant_name>', methods=['GET'])
 def get_restaurant_reviews(restaurant_name):
    
@@ -246,7 +246,7 @@ def get_restaurant_reviews(restaurant_name):
    return jsonify(json_data)
 
 
-# get all orders for this restaurant
+# 8. get all orders for this restaurant
 @restaurants.route('/orders/<restaurant_name>', methods=['GET'])
 def get_restaurant_orders(restaurant_name):
    
@@ -279,7 +279,7 @@ def get_restaurant_orders(restaurant_name):
    return jsonify(json_data)
    
 
-## Get Restaurant Info
+## 9. Get Restaurant Info
 @restaurants.route('/info/<restaurant_name>', methods=['GET'])
 def get_restaurant_info(restaurant_name):
    
