@@ -87,7 +87,7 @@ def post_new_customer():
     insert_stmt += street + '", "'
     insert_stmt += state + '", "'
     insert_stmt += city + '", "'
-    insert_stmt += zipcode + '" )'
+    insert_stmt += str(zipcode) + '" )'
 
     cursor = db.get_db().cursor()
     cursor.execute(insert_stmt)
@@ -117,8 +117,8 @@ def post_new_customer():
     insert_stmt += str(max_customer_id) + ', "'
     insert_stmt += cc + '", "'
     insert_stmt += expiration + '", '
-    insert_stmt += zipcode + ', '
-    insert_stmt += cvv + ')'
+    insert_stmt += str(zipcode) + ', '
+    insert_stmt += str(cvv) + ')'
 
     cursor = db.get_db().cursor()
     cursor.execute(insert_stmt)
@@ -149,7 +149,7 @@ def post_new_customer():
     insert_stmt += street + '", "'
     insert_stmt += state + '", "'
     insert_stmt += city + '", '
-    insert_stmt += zipcode + ')'
+    insert_stmt += str(zipcode) + ')'
 
     
     cursor = db.get_db().cursor()
